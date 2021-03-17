@@ -11,4 +11,9 @@ class UserRepository extends Repository
     {
         return User::class;
     }
+
+    public function v1Index()
+    {
+        return 1;
+    }
 }

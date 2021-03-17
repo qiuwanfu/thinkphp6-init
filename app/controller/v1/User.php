@@ -3,14 +3,14 @@ declare (strict_types = 1);
 
 namespace app\controller\v1;
 
-use app\logic\V1IndexUserLogic;
-use think\Request;
+use app\logic\user\v1\IndexLogic;
+use app\logic\user\v1\request\IndexLogicRequest;
 
 class User
 {
-    public function index(V1IndexUserLogic $logic)
+    public function index(IndexLogic $logic, IndexLogicRequest $request)
     {
-        dd($logic->execute());
+        $logic->execute($request);
     }
 
     public function save(Request $request)

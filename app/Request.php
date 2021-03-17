@@ -4,17 +4,21 @@ namespace app;
 // 应用请求对象类
 class Request extends \think\Request
 {
-    protected $page;
-
+    /**
+     * page
+     * @return int
+     */
     public function getPage(): int
     {
-        return 1;
+        return max(1,  $this->get('page'));
     }
 
-    protected $pageSize;
-
+    /**
+     * pageSize
+     * @return int
+     */
     public function getPageSize(): int
     {
-
+        return min(10000, max(1,  $this->get('pageSize')));
     }
 }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace app\logic\user\v1;
 
+use app\facade\UserRepository;
 use app\logic\user\v1\request\IndexLogicRequest;
 use app\logic\user\v1\response\IndexLogicResponse;
 
@@ -17,7 +18,7 @@ class IndexLogic
 
     public function execute(IndexLogicRequest $request)
     {
-        dd($request->getPage());
+        UserRepository::v1Index($request);
         return $this->response;
     }
 }

@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace app\logic\user\v1\request;
 
-use app\Request;
+use app\logic\PageRequest;
 
-class IndexLogicRequest extends Request
+class IndexLogicRequest extends PageRequest
 {
 
 }

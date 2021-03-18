@@ -3,17 +3,27 @@ declare (strict_types = 1);
 
 namespace app\controller\v1;
 
+use app\BaseController;
 use app\logic\user\v1\IndexLogic;
 use app\logic\user\v1\request\IndexLogicRequest;
+use Exception;
+use think\exception\HttpResponseException;
 
-class User
+class User extends BaseController
 {
-    public function index(IndexLogic $logic, IndexLogicRequest $request)
+    /**
+     * @throws Exception
+     */
+    public function index()
     {
-        $logic->execute($request);
+        $request = new IndexLogicRequest();
+        $request->setPage($this->request->get('page/d'));
+        $request->setPageSize($this->request->get('pageSize/d'));
+        $response = IndexLogic::execute($request);
+        throw new HttpResponseException(json($response->toArray()));
     }
 
-    public function save(Request $request)
+    public function save()
     {
         //
     }
@@ -23,7 +33,7 @@ class User
         //
     }
 
-    public function update(Request $request, $id)
+    public function update($id)
     {
         //
     }
